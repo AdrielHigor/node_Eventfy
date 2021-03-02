@@ -1,7 +1,8 @@
 import { Router } from 'express'
-import { createUser, deleteUser, editUser, getAllUsers, getUserByID } from '../controllers/users/index'
-import { getAllEvents, getEventByID, createEvent, deleteEvent, editEvent } from '../controllers/events/index'
+import { createUser, deleteUser, editUser, getAllUsers, getUserByID } from '../controllers/users'
+import { getAllEvents, getEventByID, createEvent, deleteEvent, editEvent } from '../controllers/events'
 import { createAddress, deleteAddress, editAddress, getAddressByID, getAllAddresses } from '../controllers/addresses';
+import { getAllOrders, createOrder, getOrderByID, deleteOrder, editOrder } from '../controllers/orders'
 
 const routes = new Router();
 
@@ -29,5 +30,12 @@ routes.post('/addresses', createAddress)
 routes.get('/addresses/:id', getAddressByID)
 routes.delete('/addresses/:id', deleteAddress)
 routes.put('/addresses/:id', editAddress)
+
+// ######## ORDERS ROUTES ############
+routes.get('/orders', getAllOrders)
+routes.post('/orders', createOrder)
+routes.get('/orders/:id', getOrderByID)
+routes.delete('/orders/:id', deleteOrder)
+routes.put('/orders/:id', editOrder)
 
 export default routes
