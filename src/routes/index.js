@@ -3,6 +3,7 @@ import { createUser, deleteUser, editUser, getAllUsers, getUserByID } from '../c
 import { getAllEvents, getEventByID, createEvent, deleteEvent, editEvent } from '../controllers/events'
 import { createAddress, deleteAddress, editAddress, getAddressByID, getAllAddresses } from '../controllers/addresses';
 import { getAllOrders, createOrder, getOrderByID, deleteOrder, editOrder } from '../controllers/orders'
+import { getAllOrderitems, createOrderItem, getOrderItemByID, deleteOrderItem, editOrderItem } from '../controllers/orderItems';
 
 const routes = new Router();
 
@@ -37,5 +38,12 @@ routes.post('/orders', createOrder)
 routes.get('/orders/:id', getOrderByID)
 routes.delete('/orders/:id', deleteOrder)
 routes.put('/orders/:id', editOrder)
+
+// ######## ORDERITEMS ROUTES ############
+routes.get('/orders', getAllOrderitems)
+routes.post('/orders', createOrderItem)
+routes.get('/orders/:id', getOrderItemByID)
+routes.delete('/orders/:id', deleteOrderItem)
+routes.put('/orders/:id', editOrderItem)
 
 export default routes
