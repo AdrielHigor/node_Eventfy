@@ -1,6 +1,6 @@
 import db from '../../config/database'
 
-export async function getAllOrderitems(req, res) {
+export async function getAllOrderItems(req, res) {
     db.query('SELECT * FROM orderitems ORDER BY itemId ASC', (error, results) => {
         if (error) {
             throw error
