@@ -4,6 +4,7 @@ import { getAllEvents, getEventByID, createEvent, deleteEvent, editEvent } from 
 import { createAddress, deleteAddress, editAddress, getAddressByID, getAllAddresses } from '../controllers/addresses';
 import { getAllOrders, createOrder, getOrderByID, deleteOrder, editOrder } from '../controllers/orders'
 import { getAllOrderitems, createOrderItem, getOrderItemByID, deleteOrderItem, editOrderItem } from '../controllers/orderItems';
+import { createCart, deleteCart, editCart, getAllCarts, getCartByID } from '../controllers/carts';
 
 const routes = new Router();
 
@@ -40,10 +41,18 @@ routes.delete('/orders/:id', deleteOrder)
 routes.put('/orders/:id', editOrder)
 
 // ######## ORDERITEMS ROUTES ############
-routes.get('/orders', getAllOrderitems)
-routes.post('/orders', createOrderItem)
-routes.get('/orders/:id', getOrderItemByID)
-routes.delete('/orders/:id', deleteOrderItem)
-routes.put('/orders/:id', editOrderItem)
+routes.get('/orderitems', getAllOrderitems)
+routes.post('/orderitems', createOrderItem)
+routes.get('/orderitems/:id', getOrderItemByID)
+routes.delete('/orderitems/:id', deleteOrderItem)
+routes.put('/orderitems/:id', editOrderItem)
+
+// ######## ORDERS ROUTES ############
+routes.get('/carts', getAllCarts)
+routes.post('/carts', createCart)
+routes.get('/carts/:id', getCartByID)
+routes.delete('/carts/:id', deleteCart)
+routes.put('/carts/:id', editCart)
+
 
 export default routes
