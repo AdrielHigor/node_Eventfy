@@ -1,6 +1,7 @@
 import { Router } from 'express'
 import { createUser, deleteUser, editUser, getAllUsers, getUserByID } from '../controllers/users/index'
 import { getAllEvents, getEventByID, createEvent, deleteEvent, editEvent } from '../controllers/events/index'
+import { createAddress, deleteAddress, editAddress, getAddressByID, getAllAddresses } from '../controllers/addresses';
 
 const routes = new Router();
 
@@ -21,5 +22,12 @@ routes.post('/events', createEvent)
 routes.get('/events/:id', getEventByID)
 routes.delete('/events/:id', deleteEvent)
 routes.put('/events/:id', editEvent)
+
+// ######## ADDRESSES ROUTES ############
+routes.get('/addresses', getAllAddresses)
+routes.post('/addresses', createAddress)
+routes.get('/addresses/:id', getAddressByID)
+routes.delete('/addresses/:id', deleteAddress)
+routes.put('/addresses/:id', editAddress)
 
 export default routes
