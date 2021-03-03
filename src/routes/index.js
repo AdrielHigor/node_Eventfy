@@ -6,6 +6,8 @@ import { getAllOrders, createOrder, getOrderByID, deleteOrder, editOrder } from 
 import { getAllOrderItems, createOrderItem, getOrderItemByID, deleteOrderItem, editOrderItem } from '../controllers/orderItems';
 import { createCart, deleteCart, editCart, getAllCarts, getCartByID } from '../controllers/carts';
 import { createCartItem, deleteCartItem, editCartItem, getAllCartItems, getCartItemByID } from '../controllers/cartItems';
+import { isAdmin, verifyToken } from '../middleware/authJwt';
+import { signin, signup } from '../controllers/auth';
 
 const routes = new Router();
 
@@ -13,9 +15,13 @@ routes.get('/', (req, res) => {
     return res.json({ ok: true })
 })
 
+// ######## AUTH ROUTES ############
+routes.post('/signin', signin)
+routes.post('/signup', signup)
+
 // ######## USERS ROUTES ############
-routes.get('/users', getAllUsers)
-routes.post('/users', createUser)
+routes.get('/users', [verifyToken, isAdmin], getAllUsers)
+routes.post('/users', [verifyToken, isAdmin], createUser)
 routes.get('/users/:id', getUserByID)
 routes.delete('/users/:id', deleteUser)
 routes.put('/users/:id', editUser)
